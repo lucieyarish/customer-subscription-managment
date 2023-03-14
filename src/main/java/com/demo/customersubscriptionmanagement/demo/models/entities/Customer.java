@@ -5,13 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "customer")
 @Entity
@@ -26,7 +26,7 @@ public class Customer {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "middle_name", nullable = false)
+    @Column(name = "middle_name", nullable = true)
     private String middleName;
 
     @Column(name = "last_name", nullable = false)
@@ -38,11 +38,10 @@ public class Customer {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "birthDate", nullable = false)
+    @Column(name = "birth_date", nullable = false)
     @DateTimeFormat(pattern="YYYY-MM-DD")
     private Date birthDate;
 
-    @OneToOne
-    @JoinColumn(name = "quotation_id")
-    private Quotation quotation;
+    @OneToMany(mappedBy = "customer")
+    private List<Quotation> quotations;
 }
