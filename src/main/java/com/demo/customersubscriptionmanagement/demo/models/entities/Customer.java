@@ -26,7 +26,7 @@ public class Customer {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "middle_name", nullable = true)
+    @Column(name = "middle_name")
     private String middleName;
 
     @Column(name = "last_name", nullable = false)
