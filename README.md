@@ -13,6 +13,7 @@ This project was built as a part of backend Java developer interview process for
 
 ## Prerequisites<a name="prerequisites"></a>
 * Java 17
+* Postman - for API calls
 
 ## Install Dependencies<a name="dependencies"></a>
 ```shell
@@ -25,12 +26,13 @@ Clone the repository to your local machine and run the application with the foll
 ```shell
 mvn spring-boot:run
 ```
+#### Viewing Database Data
+* Dummy data are automatically seeded into an in-memory database (H2). If you wish to view the data in a console, open your browser and navigate to **localhost:8080/h2-console**
 
-Dummy data are automatically seeded into an in-memory database (H2). If you wish to view the data in a console, open your browser and navigate to **localhost:8080/h2-console**
+* When the console GUI loads, leave everything the way it is, and make sure that the **JDBC URL** value is set to: **jdbc:h2:mem:test**.
 
-When the console GUI loads, leave everything the way it is and make sure that the **JDBC URL** is set to the following value: jdbc:h2:mem:test
-
-To test the application, open the Postman app on your machine, paste the JSON sample data below to the request body and send GET request to **localhost:8080/customers**. By doing so, you can view all customers currently saved in the database.
+#### Trying API Calls
+To test the application endpoints, open the Postman app on your machine, paste the JSON sample data below to the request body and send GET request to **localhost:8080/customers**. By doing so, you can view all customers currently saved in the database.
 
 ## Tech Stack and Tools Used<a name="techstack"></a>
 ### Tech Stack
