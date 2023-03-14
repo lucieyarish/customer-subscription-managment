@@ -1,4 +1,4 @@
-# Customer Insurance Managment Tool
+# Customer Insurance Management Tool
 
 1. [About](#about)
 2. [Prerequisites](#prerequisites)
