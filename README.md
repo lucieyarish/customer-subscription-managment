@@ -29,10 +29,10 @@ mvn spring-boot:run
 #### Viewing Database Data
 * Dummy data are automatically seeded into an in-memory database (H2). If you wish to view the data in a console, open your browser and navigate to **localhost:8080/h2-console**
 
-* When the console GUI loads, leave everything the way it is, and make sure that the **JDBC URL** value is set to: **jdbc:h2:mem:test**.
+* When the console GUI loads, leave everything the way it is, and make sure that the **JDBC URL** value is set to: **jdbc:h2:mem:test** and click "Connect"
 
 #### Trying API Calls
-To test the application endpoints, open the Postman app on your machine, paste the JSON sample data below to the request body and send GET request to **localhost:8080/customers**. By doing so, you can view all customers currently saved in the database.
+To test the application endpoints, open the Postman app on your machine and send GET request to **localhost:8080/customers**. By doing so, you can view all customers currently saved in the database.
 
 ## Tech Stack and Tools Used<a name="techstack"></a>
 ### Tech Stack
@@ -41,6 +41,4 @@ To test the application endpoints, open the Postman app on your machine, paste t
 * Maven
 * Spring Data JPA
 * Hibernate
-* Jakarta Bean Validation API
 * H2
-* Swagger
