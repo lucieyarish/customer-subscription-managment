@@ -4,10 +4,15 @@ import com.demo.customersubscriptionmanagement.demo.exceptions.CustomerNotFoundE
 import com.demo.customersubscriptionmanagement.demo.exceptions.CustomersNotFoundException;
 import com.demo.customersubscriptionmanagement.demo.models.dtos.CustomerDTO;
 import com.demo.customersubscriptionmanagement.demo.services.CustomerService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,5 +42,17 @@ public class CustomerController {
         } catch (CustomerNotFoundException e) {
             throw new CustomerNotFoundException(id);
         }
+    }
+
+    @PostMapping("/customers")
+    public ResponseEntity newCustomer(@RequestBody @Valid CustomerDTO customer) {
+        customerService.save(customer.toCustomer());
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer was successfully created!");
+    }
+
+    @PutMapping("/customers/{id}")
+    public ResponseEntity updateCustomer(@RequestBody @Valid CustomerDTO customer, @PathVariable Long id) {
+        customerService.update(customer, id);
+        return ResponseEntity.status(HttpStatus.OK).body("Customer was successfully updated!");
     }
 }

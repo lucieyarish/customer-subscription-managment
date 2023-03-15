@@ -54,6 +54,36 @@ public class CustomerService {
         throw new CustomerNotFoundException(id);
     }
 
+    @Transactional
+    public void save(Customer newCustomer) {
+
+        customerRepository.save(newCustomer);
+        log.info("New customer with ID: {} was successfully saved!", newCustomer.getId());
+    }
+
+    @Transactional
+    public void update(CustomerDTO customerDTO, Long id) {
+        try {
+            Optional<Customer> optCustomer = customerRepository.findById(id);
+
+            if (optCustomer.isPresent()) {
+                Customer customer = optCustomer.get();
+                customer.setFirstName(customerDTO.getFirstName());
+                customer.setMiddleName(customerDTO.getMiddleName() == null ? null : customer.getMiddleName());
+                customer.setLastName(customerDTO.getLastName());
+                customer.setEmail(customer.getEmail());
+                customer.setPhoneNumber(customer.getPhoneNumber());
+                customer.setBirthDate(customer.getBirthDate());
+
+                customerRepository.save(customer);
+
+                log.info("New details of customer with ID: {} were successfully saved!", customer.getId());
+            }
+        } catch (CustomerNotFoundException e) {
+            throw new CustomerNotFoundException(id);
+        }
+    }
+
     private CustomerDTO convertToDto(Customer customer) {
         if (customer == null) {
             return null;

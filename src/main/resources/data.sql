@@ -1,7 +1,7 @@
-INSERT INTO customer(id, first_name, middle_name, last_name, email, phone_number, birth_date)
-VALUES (1, 'Larry', 'John', 'Smith', 'larry.smith@gmail.com', '+420666222333', '1975-08-12'),
-       (2, 'Mike', 'Rowan', 'Hall', 'mike.hall@gmail.com', '+420555333222', '1984-01-01'),
-       (3, 'Kate', null, 'Williams', 'kate.will@gmail.com', '+420111222333', '1963-11-01');
+INSERT INTO customer(first_name, middle_name, last_name, email, phone_number, birth_date)
+VALUES ('Larry', 'John', 'Smith', 'larry.smith@gmail.com', '+420666222333', '1975-08-12'),
+       ('Mike', 'Rowan', 'Hall', 'mike.hall@gmail.com', '+420555333222', '1984-01-01'),
+       ('Kate', null, 'Williams', 'kate.will@gmail.com', '+420111222333', '1963-11-01');
 
 INSERT INTO quotation(id, insurance_began_on, insured_amount, mortgage_signed_on, customer_id)
 VALUES (1, '2022-08-12', 300000, '2020-03-01', 1),
