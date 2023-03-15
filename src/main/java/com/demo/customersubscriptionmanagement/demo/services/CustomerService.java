@@ -50,6 +50,7 @@ public class CustomerService {
             return convertToDto(optCustomer.get());
         }
 
+        log.error("Customer with ID: {} not found.", id);
         throw new CustomerNotFoundException(id);
     }
 

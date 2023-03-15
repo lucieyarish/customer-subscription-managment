@@ -22,14 +22,20 @@ public class CustomerController {
     @GetMapping("/customers")
     @ResponseStatus(HttpStatus.OK)
     public List<CustomerDTO> all() throws CustomersNotFoundException {
-
-        return customerService.findAllCustomers();
+        try {
+            return customerService.findAllCustomers();
+        } catch (CustomersNotFoundException e){
+            throw new CustomersNotFoundException();
+        }
     }
 
     @GetMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CustomerDTO one(@PathVariable Long id) throws CustomerNotFoundException {
-
-        return customerService.findCustomer(id);
+        try {
+            return customerService.findCustomer(id);
+        } catch (CustomerNotFoundException e) {
+            throw new CustomerNotFoundException(id);
+        }
     }
 }
