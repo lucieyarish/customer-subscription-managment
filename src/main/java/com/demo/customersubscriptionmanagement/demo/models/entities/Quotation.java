@@ -1,5 +1,6 @@
 package com.demo.customersubscriptionmanagement.demo.models.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,6 +41,6 @@ public class Quotation {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne(mappedBy = "quotation")
+    @OneToOne(mappedBy = "quotation", cascade = CascadeType.REMOVE)
     private Subscription subscription;
 }

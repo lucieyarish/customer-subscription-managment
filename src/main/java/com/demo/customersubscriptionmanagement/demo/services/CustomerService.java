@@ -34,6 +34,7 @@ public class CustomerService {
                 .collect(Collectors.toList());
 
         if (CollectionUtils.isEmpty(customers)) {
+            log.error("No customers found.");
             throw new CustomersNotFoundException();
         } else {
             return customers;
@@ -80,6 +81,22 @@ public class CustomerService {
                 log.info("New details of customer with ID: {} were successfully saved!", customer.getId());
             }
         } catch (CustomerNotFoundException e) {
+            log.error("Customer with ID: {} not found.", id);
+            throw new CustomerNotFoundException(id);
+        }
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        try {
+            Optional<Customer> optCustomer = customerRepository.findById(id);
+
+            if (optCustomer.isPresent()) {
+                customerRepository.deleteById(id);
+                log.info("Deleted customer with ID: {}.", id);
+            }
+        } catch (CustomerNotFoundException e) {
+            log.error("Customer with ID: {} not found.", id);
             throw new CustomerNotFoundException(id);
         }
     }
@@ -99,5 +116,4 @@ public class CustomerService {
                 .birthDate(customer.getBirthDate())
                 .build();
     }
-
 }

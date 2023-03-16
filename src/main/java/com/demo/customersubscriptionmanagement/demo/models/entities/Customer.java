@@ -46,6 +46,6 @@ public class Customer {
     @DateTimeFormat(pattern="YYYY-MM-DD")
     private Date birthDate;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Quotation> quotations;
 }
