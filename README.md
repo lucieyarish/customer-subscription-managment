@@ -3,7 +3,8 @@
 1. [About](#about)
 2. [Prerequisites](#prerequisites)
 3. [Install Dependencies](#dependencies)
-4. [Tech Stack](#techstack)
+4. [API Documentation](#documentation)
+5. [Tech Stack](#techstack)
 
 ## About<a name="about"></a>
 
@@ -34,6 +35,9 @@ mvn spring-boot:run
 #### Trying API Calls
 To test the application endpoints, open the Postman app on your machine and send GET request to **localhost:8080/customers**. By doing so, you can view all customers currently saved in the database.
 
+## Documentation<a name="documentation"></a>
+To view API documentation, run the app locally and navigate to **http://localhost:8080/swagger-ui/index.html#/**
+
 ## Tech Stack and Tools Used<a name="techstack"></a>
 ### Tech Stack
 * Java 17
@@ -42,3 +46,5 @@ To test the application endpoints, open the Postman app on your machine and send
 * Spring Data JPA
 * Hibernate
 * H2
+* OpenAPI
+* Mockito
